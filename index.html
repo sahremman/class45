@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">ClassManager</div>
+        <ul>
+            <li><a href="index.html" class="active">Dashboard</a></li>
+            <li><a href="soil-chemistry.html">Environmental Soil Chemistry</a></li>
+            <li><a href="sustainable-dev.html">Sustainable Development</a></li>
+            <li><a href="students.html">Students</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Welcome to Your Class Manager</h1>
+        <div class="dashboard">
+            <div class="dashboard-card">
+                <h2>Environmental Soil Chemistry</h2>
+                <p>Students enrolled: <span id="soil-students-count">0</span></p>
+                <p>Next class: Monday, 10:00 AM</p>
+                <a href="soil-chemistry.html" class="btn">Manage Class</a>
+            </div>
+            <div class="dashboard-card">
+                <h2>Sustainable Development</h2>
+                <p>Students enrolled: <span id="sust-students-count">0</span></p>
+                <p>Next class: Wednesday, 2:00 PM</p>
+                <a href="sustainable-dev.html" class="btn">Manage Class</a>
+            </div>
+            <div class="dashboard-card">
+                <h2>Recent Activity</h2>
+                <ul id="recent-activity">
+                    <li>Welcome to your new class management system!</li>
+                </ul>
+            </div>
+            <div class="dashboard-card">
+                <h2>Quick Actions</h2>
+                <button onclick="showAddStudentModal()" class="btn">Add Student</button>
+                <button onclick="exportStudentData()" class="btn">Export Data</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Student Modal -->
+    <div id="add-student-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add New Student</h2>
+            <form id="add-student-form">
+                <div class="form-group">
+                    <label for="student-name">Full Name:</label>
+                    <input type="text" id="student-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="student-email">Email:</label>
+                    <input type="email" id="student-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Class:</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="soil-class" value="soil-chemistry">
+                        <label for="soil-class">Environmental Soil Chemistry</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="sust-class" value="sustainable-dev">
+                        <label for="sust-class">Sustainable Development</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Add Student</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ClassManager. Designed for GitHub deployment.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
