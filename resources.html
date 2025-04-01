@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Class Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">ClassManager</div>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="soil-chemistry.html">Environmental Soil Chemistry</a></li>
+            <li><a href="sustainable-dev.html">Sustainable Development</a></li>
+            <li><a href="students.html">Students</a></li>
+            <li><a href="resources.html" class="active">Resources</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header class="page-header">
+            <h1>Teaching Resources</h1>
+            <div class="header-actions">
+                <button onclick="showAddResourceModal()" class="btn">Add Resource</button>
+            </div>
+        </header>
+
+        <div class="resources-container">
+            <div class="filters">
+                <div class="search-bar">
+                    <input type="text" id="resource-search" placeholder="Search resources..." onkeyup="filterResources()">
+                </div>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" id="filter-soil-resources" checked onchange="filterResources()">
+                        Environmental Soil Chemistry
+                    </label>
+                    <label>
+                        <input type="checkbox" id="filter-sust-resources" checked onchange="filterResources()">
+                        Sustainable Development
+                    </label>
+                    <label>
+                        <input type="checkbox" id="filter-general-resources" checked onchange="filterResources()">
+                        General
+                    </label>
+                </div>
+            </div>
+
+            <div class="resources-list">
+                <!-- Soil Chemistry Resources -->
+                <section class="resource-section" data-class="soil-chemistry">
+                    <h2>Environmental Soil Chemistry Resources</h2>
+                    <div class="resource-cards" id="soil-resources">
+                        <!-- Resources will be populated from JavaScript -->
+                    </div>
+                </section>
+
+                <!-- Sustainable Development Resources -->
+                <section class="resource-section" data-class="sustainable-dev">
+                    <h2>Sustainable Development Resources</h2>
+                    <div class="resource-cards" id="sust-resources">
+                        <!-- Resources will be populated from JavaScript -->
+                    </div>
+                </section>
+
+                <!-- General Resources -->
+                <section class="resource-section" data-class="general">
+                    <h2>General Teaching Resources</h2>
+                    <div class="resource-cards" id="general-resources">
+                        <!-- Resources will be populated from JavaScript -->
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Calendar Section -->
+        <section class="calendar-section">
+            <h2>Academic Calendar</h2>
+            <div class="calendar-container" id="calendar">
+                <!-- Calendar will be populated from JavaScript -->
+            </div>
+            <button onclick="showAddEventModal()" class="btn">Add Event</button>
+        </section>
+    </main>
+
+    <!-- Add Resource Modal -->
+    <div id="add-resource-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add New Resource</h2>
+            <form id="add-resource-form">
+                <div class="form-group">
+                    <label for="resource-title">Title:</label>
+                    <input type="text" id="resource-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="resource-type">Type:</label>
+                    <select id="resource-type" required>
+                        <option value="">Select type</option>
+                        <option value="document">Document</option>
+                        <option value="video">Video</option>
+                        <option value="website">Website</option>
+                        <option value="book">Book Reference</option>
+                        <option value="tool">Tool/Software</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resource-link">Link/File:</label>
+                    <input type="text" id="resource-link" placeholder="URL or file path" required>
+                </div>
+                <div class="form-group">
+                    <label for="resource-description">Description:</label>
+                    <textarea id="resource-description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Related Class:</label>
+                    <select id="resource-class" required>
+                        <option value="soil-chemistry">Environmental Soil Chemistry</option>
+                        <option value="sustainable-dev">Sustainable Development</option>
+                        <option value="general">General (Both Classes)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Add Resource</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Event Modal -->
+    <div id="add-event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add Calendar Event</h2>
+            <form id="add-event-form">
+                <div class="form-group">
+                    <label for="event-title">Event Title:</label>
+                    <input type="text" id="event-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-date">Date:</label>
+                    <input type="date" id="event-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-time">Time:</label>
+                    <input type="time" id="event-time">
+                </div>
+                <div class="form-group">
+                    <label for="event-description">Description:</label>
+                    <textarea id="event-description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Related Class:</label>
+                    <select id="event-class" required>
+                        <option value="soil-chemistry">Environmental Soil Chemistry</option>
+                        <option value="sustainable-dev">Sustainable Development</option>
+                        <option value="general">General (Both Classes)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn">Add Event</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ClassManager. Designed for GitHub deployment.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
