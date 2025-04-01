@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - Class Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">ClassManager</div>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="soil-chemistry.html">Environmental Soil Chemistry</a></li>
+            <li><a href="sustainable-dev.html">Sustainable Development</a></li>
+            <li><a href="students.html" class="active">Students</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header class="page-header">
+            <h1>Students Management</h1>
+            <div class="header-actions">
+                <button onclick="showAddStudentModal()" class="btn">Add Student</button>
+                <button onclick="importStudents()" class="btn">Import Students</button>
+                <button onclick="exportStudentData()" class="btn">Export Data</button>
+            </div>
+        </header>
+
+        <div class="students-container">
+            <div class="filters">
+                <div class="search-bar">
+                    <input type="text" id="student-search" placeholder="Search students..." onkeyup="filterAllStudents()">
+                </div>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" id="filter-soil" checked onchange="filterAllStudents()">
+                        Environmental Soil Chemistry
+                    </label>
+                    <label>
+                        <input type="checkbox" id="filter-sust" checked onchange="filterAllStudents()">
+                        Sustainable Development
+                    </label>
+                </div>
+            </div>
+
+            <div class="students-list">
+                <table class="student-table full-width">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Classes</th>
+                            <th>Attendance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="all-students-list">
+                        <!-- Students will be populated from JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="student-details" id="student-details">
+                <h2>Student Details</h2>
+                <p>Select a student to view details</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Import Students Modal -->
+    <div id="import-students-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Import Students</h2>
+            <p>Upload a CSV file with student data.</p>
+            <p>Required format: Name, Email, Classes (comma-separated)</p>
+            <form id="import-students-form">
+                <div class="form-group">
+                    <label for="students-csv">CSV File:</label>
+                    <input type="file" id="students-csv" accept=".csv" required>
+                </div>
+                <button type="submit" class="btn">Import</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Student Modal -->
+    <div id="edit-student-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Edit Student</h2>
+            <form id="edit-student-form">
+                <input type="hidden" id="edit-student-id">
+                <div class="form-group">
+                    <label for="edit-student-name">Full Name:</label>
+                    <input type="text" id="edit-student-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-student-email">Email:</label>
+                    <input type="email" id="edit-student-email" required>
+                </div>
+                <div class="form-group">
+                    <label>Class:</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="edit-soil-class" value="soil-chemistry">
+                        <label for="edit-soil-class">Environmental Soil Chemistry</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="edit-sust-class" value="sustainable-dev">
+                        <label for="edit-sust-class">Sustainable Development</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ClassManager. Designed for GitHub deployment.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
