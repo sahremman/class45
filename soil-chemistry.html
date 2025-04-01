@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Soil Chemistry - Class Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">ClassManager</div>
+        <ul>
+            <li><a href="index.html">Dashboard</a></li>
+            <li><a href="soil-chemistry.html" class="active">Environmental Soil Chemistry</a></li>
+            <li><a href="sustainable-dev.html">Sustainable Development</a></li>
+            <li><a href="students.html">Students</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header class="class-header">
+            <h1>Environmental Soil Chemistry</h1>
+            <div class="class-actions">
+                <button onclick="showAddStudentModal('soil-chemistry')" class="btn">Add Student</button>
+                <button onclick="showAddAssignmentModal('soil-chemistry')" class="btn">Add Assignment</button>
+            </div>
+        </header>
+
+        <div class="class-container">
+            <section class="class-section">
+                <h2>Class Overview</h2>
+                <p><strong>Schedule:</strong> Mondays and Thursdays, 10:00 AM - 11:30 AM</p>
+                <p><strong>Location:</strong> Science Building, Room 305</p>
+                <p><strong>Description:</strong> This course examines the chemical processes in soils and their influence on plant nutrition, water quality, and environmental sustainability.</p>
+            </section>
+
+            <section class="class-section">
+                <h2>Enrolled Students</h2>
+                <div class="search-filter">
+                    <input type="text" id="soil-student-search" placeholder="Search students..." onkeyup="filterStudents('soil-chemistry')">
+                </div>
+                <table class="student-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Attendance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="soil-students-list">
+                        <!-- Students will be populated from JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="class-section">
+                <h2>Assignments</h2>
+                <table class="assignment-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Due Date</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="soil-assignments-list">
+                        <!-- Assignments will be populated from JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="class-section">
+                <h2>Announcements</h2>
+                <div id="soil-announcements">
+                    <!-- Announcements will be populated from JavaScript -->
+                </div>
+                <div class="announcement-form">
+                    <h3>New Announcement</h3>
+                    <textarea id="soil-announcement-text" placeholder="Type your announcement here..."></textarea>
+                    <button onclick="addAnnouncement('soil-chemistry')" class="btn">Post Announcement</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Add Assignment Modal -->
+    <div id="add-assignment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Add New Assignment</h2>
+            <form id="add-assignment-form">
+                <input type="hidden" id="assignment-class">
+                <div class="form-group">
+                    <label for="assignment-title">Title:</label>
+                    <input type="text" id="assignment-title" required>
+                </div>
+                <div class="form-group">
+                    <label for="assignment-due-date">Due Date:</label>
+                    <input type="date" id="assignment-due-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="assignment-description">Description:</label>
+                    <textarea id="assignment-description" required></textarea>
+                </div>
+                <button type="submit" class="btn">Add Assignment</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 ClassManager. Designed for GitHub deployment.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
